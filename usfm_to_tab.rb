@@ -19,8 +19,8 @@ Dir.glob("**/*.usfm") do |file_name|
   text.each_line do |line|
 
     line.split("\r").each_with_index do |l, i|
-      if l.include? ("\\id")
-        book_name = l.partition(" ").last.gsub("\n", "")
+      if l.include? ("\\id ")
+        book_name = l.partition(" ").last.gsub("\n", "").partition(" ").first
       end
       if l.include? ("\\c")
         chapter = l.gsub!(/\\c\s+/, "\t").gsub("\n", "")
