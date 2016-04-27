@@ -25,6 +25,7 @@ Dir.glob("**/*.usfm") do |file_name|
       if l.include? ("\\c")
         chapter = l.gsub!(/\\c\s+/, "\t").gsub("\n", "")
         b_chp = book_name + chapter
+        next
       end
       if l.include? ("\\v")
         n = l
