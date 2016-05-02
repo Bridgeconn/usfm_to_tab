@@ -11,7 +11,7 @@ Dir.glob("**/*.*fm") do |file_name|
   directory_name = "output_folder"
   Dir.mkdir(directory_name) unless File.exists?(directory_name)
 
-  output_name = "#{directory_name}/#{File.basename(file, '.*')}.txt"
+  output_name = "#{directory_name}/#{File.basename(file, '.*')}.tab"
   output = File.open(output_name, 'w')
 
   text.each_line do |line|
