@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
-Dir.glob("**/*.SFM") do |file_name|
+
+Dir.glob("**/*.*fm") do |file_name|
   book_name = ""
   b_chp = ""
   b_chp_ver_t = ""
@@ -34,3 +35,4 @@ Dir.glob("**/*.SFM") do |file_name|
   end
   output.close
 end
+
