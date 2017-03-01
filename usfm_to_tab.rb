@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-
-Dir.glob("**/*.*fm") do |file_name|
+Dir.glob("**/*.usfm") do |file_name|
   book_name = ""
   b_chp = ""
   b_chp_ver_t = ""
@@ -15,15 +14,16 @@ Dir.glob("**/*.*fm") do |file_name|
   output = File.open(output_name, 'w')
 
   text.each_line do |line|
+    puts line
     line.split("\r").each_with_index do |l, i|
-      if l.include? ("\\id ")
-        book_name = l.partition(" ").last.gsub("\n", "").partition(" ").first
+      if l.include? ("\\id ")  
+        book_name = l.partition(" ").last.gsub("\n", "").to_s.partition(" ").first
         break
-      elsif l.include? ("\\c")
-        chapter = l.gsub!(/\\c\s+/, "\t").gsub("\n", "")
+      elsif l.include? ("\\c ") 
+        chapter = l.gsub!(/\\c\s+/, "\t").to_s.gsub("\n", "")
         b_chp = book_name + chapter
         break
-      elsif l.include? ("\\v")
+      elsif l.include? ("\\v ")
         n = l
         v = l
         ver_number = n.gsub!(/\\v\s+/, "\t").partition(" ").first
@@ -35,4 +35,3 @@ Dir.glob("**/*.*fm") do |file_name|
   end
   output.close
 end
-
